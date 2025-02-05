@@ -6,7 +6,7 @@
 			"cat.2048/texture_00.png"
 		],
 		"Physics": "cat.physics3.json",
-		"DisplayInfo": "cat.cdi3.json"
+		"DisplayInfo": "cat.cdi3.json",
 		“motion”: "live2d_motion1.motion3.json"
 	},
 	"Groups": [
