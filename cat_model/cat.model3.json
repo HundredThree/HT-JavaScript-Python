@@ -5,12 +5,15 @@
 		"Textures": [
 			"cat.2048/texture_00.png"
 		],
-		"Physics": "cat.physics3.json",
 		"DisplayInfo": "cat.cdi3.json",
+		"Physics": "cat.physics3.json",
 		"Motions": {
       "": [
         {
           "File": "live2d_motion1.motion3.json"
+        },
+        {
+          "File": "live2d_motion2.motion3.json"
         }
       ]
     }
