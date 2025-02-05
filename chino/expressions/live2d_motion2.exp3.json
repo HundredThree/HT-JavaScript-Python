@@ -1,0 +1,30 @@
+{
+	"Type": "Live2D Expression",
+	"Parameters": [
+		{
+			"Id": "CatParamLeftHandDown",
+			"Value": 0,
+			"Blend": "Add"
+		},
+		{
+			"Id": "Param3",
+			"Value": 0,
+			"Blend": "Add"
+		},
+		{
+			"Id": "ParamMouseLeftDown",
+			"Value": 0,
+			"Blend": "Add"
+		},
+		{
+			"Id": "ParamMouseY",
+			"Value": 0,
+			"Blend": "Add"
+		},
+		{
+			"Id": "ParamMouseX",
+			"Value": 0,
+			"Blend": "Add"
+		}
+	]
+}
