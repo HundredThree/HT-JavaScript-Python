@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>2D Live 说话框</title>
+        <style>
+            body {
+                margin: 0;
+                overflow: hidden;
+            }
+    
+            /* 说话框样式 */
+            .speech-bubble {
+                position: absolute;
+                top: 15%;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(255, 255, 255, 0.2); /* 半透明背景 */
+                padding: 5px 15px;
+                border-radius: 14px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                font-family: "Comic Sans MS", "Arial Rounded MT Bold", "Nunito", sans-serif; /* 俏皮可爱字体 */
+                font-size: 18px;
+                font-weight: bold;
+                color: #ff66a3; /* 可爱的粉色 */
+                max-width: 260px;
+                min-width: 160px;
+                text-align: center;
+                z-index: 1000;
+                backdrop-filter: blur(8px); /* 毛玻璃效果 */
+                animation: fadeIn 0.8s ease-out;
+                border: 2px solid rgba(255, 182, 193, 0.8); /* 粉色边框 */
+            }
+    
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+        </style>
+    </head>
+<body>
+    <!-- 说话框 -->
+    <div class="speech-bubble" id="speech-bubble">今天要来点兔子吗？</div>
+
+    <!-- 只保留 Canvas -->
+    <div class="Canvas"></div>
+
+    <!-- 必要的 JS 依赖 -->
+    <script src="https://hundredthree.github.io/HT-JavaScript-Python/live2d_3_js/jquery.min.js"></script>
+    <script src="https://hundredthree.github.io/HT-JavaScript-Python/live2d_3_js/live2dcubismcore.min.js"></script>
+    <script src="https://hundredthree.github.io/HT-JavaScript-Python/live2d_3_js/pixi.min.js"></script>
+    <script src="https://hundredthree.github.io/HT-JavaScript-Python/live2d_3_js/live2dcubismframework.js"></script>
+    <script src="https://hundredthree.github.io/HT-JavaScript-Python/live2d_3_js/live2dcubismpixi.js"></script>
+
+    <!-- Live2D 相关代码 -->
+    <script src="https://hundredthree.github.io/HT-JavaScript-Python/live2d_3_js/l2d.js"></script>
+    <script src="https://hundredthree.github.io/HT-JavaScript-Python/live2d_3_js/main.js"></script>
+
+    <!-- 自动更新说话框内容的脚本 -->
+    <script>
+        // 根据日期设置节日问候
+        function isLunarNewYear() {
+          const lunarNewYearDates = [
+            "2026-02-17",
+            "2027-02-07",
+            "2028-01-26",
+            "2029-02-13"
+          ];
+          const today = new Date();
+          const todayString = today.toISOString().split("T")[0];
+          return lunarNewYearDates.includes(todayString);
+        }
+    
+        function getHolidayMessage() {
+          const today = new Date();
+          const month = today.getMonth() + 1; // 月份从0开始
+          const date = today.getDate();
+    
+          if (month === 6 && date === 6) {
+            return "今天是生日呢……！希望你能度过温暖又开心的一天。";
+          } else if (month === 1 && date === 1) {
+            return "新年快乐！新的一年也请多关照哦。";
+          } else if (isLunarNewYear()) {
+            return "春节快乐！今天一定要开开心心的哦。";
+          } else if (month === 5 && date === 1) {
+            return "劳动节到了，适合放松一下呢。";
+          } else if (month === 6 && date === 1) {
+            return "儿童节快乐！今天也要保持一颗童心哦。";
+          } else if (month === 10 && date === 1) {
+            return "国庆节快乐，今天去哪里玩了吗？";
+          } else if (month === 8 && date === 15) {
+            return "中秋节快乐！月亮好圆，好像也很好吃呢。";
+          } else if (month === 4 && date === 5) {
+            return "清明节到了，别忘了和家人一起踏青呀。";
+          } else {
+            return "今天也请多多关照哦。";
+          }
+        }
+    
+        // 显示节日问候
+        const dialogBox = document.getElementById("speech-bubble");
+        dialogBox.textContent = getHolidayMessage();
+    
+        // 定时更新日常台词
+        const messages = [
+          "欢迎光临，今天想喝点什么呢？",
+          "呼……稍微休息一下吧。",
+          "如果需要我帮忙的话，请告诉我。",
+          "今天的天气真不错呢。",
+          "最近有在努力学习新东西哦。",
+          "欢迎回来，今天也要加油哦。"
+        ];
+    
+        let index = 0;
+        setTimeout(() => {
+          setInterval(() => {
+            dialogBox.textContent = messages[index];
+            index = (index + 1) % messages.length;
+          }, 5000); // 每隔5秒切换对话
+        }, 8000); // 首句台词停留8秒
+      </script>
+</body>
+</html>
